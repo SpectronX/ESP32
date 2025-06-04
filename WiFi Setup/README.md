@@ -1,4 +1,4 @@
-## WiFi capabiliites with ESP32
+## WiFi Capabilites with ESP32
 Unlike Arduino, ESP32 come with some cool features like WiFi and Bluetooth capabilities which I would be exploring. 
 Looking at today's world of IoT, it is without a doubt that this microcontroller can have a role to play in wireless connectivity for efficient data transfer in some levels. 
 
