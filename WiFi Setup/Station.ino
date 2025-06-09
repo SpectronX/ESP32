@@ -3,13 +3,19 @@
 #include <WiFi.h>
 
 void setup(){
-  WiFi.mode(WIFI_STA); //Setup of mode
-    WiFi.begin("Wokwi-GUEST", "");
-    Serial.println("Connecting to WiFi");
-    while(WiFi.status() != WL_CONNECTED){
-        Serial.print(".");
-        delay(300);
-    }
+  Serial.begin(115200); //Initializing the Serial Monitor
+  
+  WiFi.mode(WIFI_STA); // Setting up the microcontroller in STATION mode
+  
+  WiFi.begin("Wokwi-GUEST", ""); 
+  /* The first argument is the WiFi network we are connecting to
+  and the second is the password: no password in this case */
+
+  Serial.println("Connecting to WiFi");
+  while(WiFi.status() != WL_CONNECTED){ // Checking if connnection has succedded.
+    Serial.print(".");
+    delay(300);
+  }
     Serial.println("Network is Up");
     Serial.print("IP Address: ");
     Serial.println(WiFi.localIP());
