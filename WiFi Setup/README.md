@@ -9,9 +9,11 @@ In this mode, we are basically making the ESP32 behave like our phones when they
 
 ⚠️ Just a note: Always be cautious about which networks you connect to—especially open ones. Staying safe is always best.
 
-The code for this kind of setup is provided in [file](Station.ino)
+The code for this kind of setup is provided in this [file](Station.ino)
 
 ## Setting up as an ACCESS POINT
 In this mode, the ESP32 acts as the Wi-Fi network we would be connecting to: like a router or mobile hotspot. With this setup, a network name (SSID) and a password is defined, after which the ESP32 starts broadcasting it. Once active, any device with the correct credentials can connect to it.
 
 Since I'm running this in a simulation environment, the access point can be created, but actually getting a device to connect to it isn't possible here. Nevertheless, it's the same code that gets the ESP32 operating in the mode in the real world with actual hardware.
+
+The code for this setup is provided in this [file](AP.ino)
