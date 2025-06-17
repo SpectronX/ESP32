@@ -1,3 +1,6 @@
 ## A WEBSERVER?
 
-Well yes, it turns out we can make our ESP32 function as a server, where certain web pages would be rendered to us based on certain commands. Pretty interesting!
+Well yes. It turns out we can make our ESP32 function as a webserver, where we can render some webpages in response to certain commands. Pretty interesting! I know. But how does this work?
+
+## Working Principle
+
