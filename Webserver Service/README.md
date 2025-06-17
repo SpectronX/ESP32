@@ -18,4 +18,6 @@ In the same way big websites use web servers to respond to requests, the ESP32 c
 
 - Join your home Wi-Fi network (Station Mode)
 
-Once it's networked, any device on that network (like your phone or laptop) can connect to the ESP32’s IP address and send HTTP requests. The ESP32 will handle them and respond accordingly. It might be returning a webpage that shows live sensor data or toggles an LED (which we would be trying)
+Once it's networked, any device on that network (like your phone or laptop) can connect to the ESP32’s IP address and send HTTP requests. The ESP32 will handle them and respond accordingly. It might be returning a webpage that shows live sensor data or toggles an LED.
+
+To try this out, we would toggle an LED from a web page using the ESP32. 
