@@ -23,3 +23,17 @@ Once it's networked, any device on that network (like your phone or laptop) can 
 To try this out, we would toggle an LED from a web page using the ESP32. 
 
 ## Summary of what's going on in the code
+In my practices, I use the Wokwi Simulator in VS code, so some lines of code would be required as compared to using the components in-person. 
+
+By including <mark>#include <WebServer.h></mark> library, we are ready to setup our mini webserver on the ESP32. We first create an object of the library names <mark>server</mark> which sets up the webserver on the ESP32 to listen on port 80: the standard port for HTTP communication.
+
+We set up a web server on the ESP32 to listen on port 80, which is the standard port for HTTP communication. This allows the ESP32 to handle web requests from devices like phones or computers.
+
+The ESP32 connects to a Wi-Fi network (Access Point) using its WiFi.begin() function. Once connected, it is assigned an IP address by the network's DHCP server. This IP address is used by other devices on the network to reach and communicate with the ESP32.
+
+Using the server.on() function (from the WebServer library), we define routes — specific URL paths (like /, /ledon, /ledoff) and what the ESP32 should do when each path is visited. These routes are mapped to functions like Homepage(), ledon(), and ledoff() which control the logic (e.g., toggle an LED and respond with a webpage).
+
+The "localhost" in the Serial.println("Open http://localhost:8180") is specific to the Wokwi simulation. It forwards traffic from your actual browser to the simulated ESP32. This is necessary because the ESP32 in Wokwi runs in a sandboxed environment — so port forwarding is used to "bridge" your computer and the simulation.
+
+Each command that the ESP32 performs is triggered by visiting a route — and the corresponding function executes to serve a response (HTML or plain text) and optionally perform actions (e.g., turn an LED on or off).
+
