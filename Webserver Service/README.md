@@ -25,15 +25,17 @@ To try this out, we would toggle an LED from a web page using the ESP32.
 ## Summary of what's going on in the code
 In my practices, I use the Wokwi Simulator in VS code, so some lines of code would be required as compared to using the components in-person. 
 
-By including <mark>#include <WebServer.h></mark> library, we are ready to setup our mini webserver on the ESP32. We first create an object of the library names <mark>server</mark> which sets up the webserver on the ESP32 to listen on port 80: the standard port for HTTP communication.
+By including the **#include <WebServer.h>** library, we are ready to setup our mini webserver on the ESP32. We first create an object of the library names **server** which sets up the webserver on the ESP32 to listen on port 80: the standard port for HTTP communication. This allows the ESP32 to handle web requests from devices like phones and computers.
 
-We set up a web server on the ESP32 to listen on port 80, which is the standard port for HTTP communication. This allows the ESP32 to handle web requests from devices like phones or computers.
+I had the ESP32 connect to the Guest Wi-Fi network in the simulator, and once connected, it is addigned an IP address by the network's DHCP server. This IP address is much like the name other devices on the network would use to reach and communicate with the ESP32.
 
-The ESP32 connects to a Wi-Fi network (Access Point) using its WiFi.begin() function. Once connected, it is assigned an IP address by the network's DHCP server. This IP address is used by other devices on the network to reach and communicate with the ESP32.
+Using the **server.on()** function, routes (specific URL paths like /ledon) are defined. These routes are mapped to functions like Homapage() which controls the logic. These functions tells the ESP32 what to do when those routes are visited.
 
-Using the server.on() function (from the WebServer library), we define routes — specific URL paths (like /, /ledon, /ledoff) and what the ESP32 should do when each path is visited. These routes are mapped to functions like Homepage(), ledon(), and ledoff() which control the logic (e.g., toggle an LED and respond with a webpage).
+It can be seen that, my code has a line which has **Serial.println("Open http://localhost:8180")**. The "localhost" is specific to the Wokwi simulation. It forwards traffic from the simulated environment to my browswer. Since the simution runs in a sanboxed environment, port forwarding is neccessary to "bridge" my computer and the simulation.
 
-The "localhost" in the Serial.println("Open http://localhost:8180") is specific to the Wokwi simulation. It forwards traffic from your actual browser to the simulated ESP32. This is necessary because the ESP32 in Wokwi runs in a sandboxed environment — so port forwarding is used to "bridge" your computer and the simulation.
-
-Each command that the ESP32 performs is triggered by visiting a route — and the corresponding function executes to serve a response (HTML or plain text) and optionally perform actions (e.g., turn an LED on or off).
+This port forwarding can be achieved by including this line of code in the Wokwi.toml when using VS code.
+# Forward http://localhost:8180 to port 80 on the simulated ESP32:
+[[net.forward]]
+from = "localhost:8180"
+to = "target:80"
 
