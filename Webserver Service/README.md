@@ -34,7 +34,8 @@ Using the **server.on()** function, routes (specific URL paths like /ledon) are 
 It can be seen that, my code has a line which has **Serial.println("Open http://localhost:8180")**. The "localhost" is specific to the Wokwi simulation. It forwards traffic from the simulated environment to my browswer. Since the simution runs in a sanboxed environment, port forwarding is neccessary to "bridge" my computer and the simulation.
 
 This port forwarding can be achieved by including this line of code in the Wokwi.toml when using VS code.
-# Forward http://localhost:8180 to port 80 on the simulated ESP32:
+
+#Forward http://localhost:8180 to port 80 on the simulated ESP32:
 [[net.forward]]
 from = "localhost:8180"
 to = "target:80"
