@@ -35,8 +35,7 @@ It can be seen that, my code has a line which has **Serial.println("Open http://
 
 This port forwarding can be achieved by including this line of code in the Wokwi.toml when using VS code.
 
-#Forward http://localhost:8180 to port 80 on the simulated ESP32:
-
-[[net.forward]]
-from = "localhost:8180"
+#Forward http://localhost:8180 to port 80 on the simulated ESP32:  
+[[net.forward]]  
+from = "localhost:8180"  
 to = "target:80"
