@@ -27,16 +27,16 @@ In my practices, I use the Wokwi Simulator in VS code, so some lines of code wou
 
 By including the **#include <WebServer.h>** library, we are ready to setup our mini webserver on the ESP32. We first create an object of the library names **server** which sets up the webserver on the ESP32 to listen on port 80: the standard port for HTTP communication. This allows the ESP32 to handle web requests from devices like phones and computers.
 
-I had the ESP32 connect to the Guest Wi-Fi network in the simulator, and once connected, it is addigned an IP address by the network's DHCP server. This IP address is much like the name other devices on the network would use to reach and communicate with the ESP32.
+I had the ESP32 connect to the Guest Wi-Fi network in the simulator, and once connected, it is assigned an IP address by the network's DHCP server. This IP address is much like the "name" other devices on the network would use to reach and communicate with the ESP32.
 
 Using the **server.on()** function, routes (specific URL paths like /ledon) are defined. These routes are mapped to functions like Homapage() which controls the logic. These functions tells the ESP32 what to do when those routes are visited.
 
-It can be seen that, my code has a line which has **Serial.println("Open http://localhost:8180")**. The "localhost" is specific to the Wokwi simulation. It forwards traffic from the simulated environment to my browswer. Since the simution runs in a sanboxed environment, port forwarding is neccessary to "bridge" my computer and the simulation.
+It can be seen that, my code has a line which has **Serial.println("Open http://localhost:8180")**. The "localhost" is specific to the Wokwi simulation. It forwards traffic from the simulated environment to my browswer. Since the simution runs in a sandboxed environment, port forwarding is neccessary to "bridge" my computer and the simulation.
 
 This port forwarding can be achieved by including this line of code in the Wokwi.toml when using VS code.
 
 #Forward http://localhost:8180 to port 80 on the simulated ESP32:
+
 [[net.forward]]
 from = "localhost:8180"
 to = "target:80"
-
