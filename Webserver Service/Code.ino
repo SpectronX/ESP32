@@ -2,10 +2,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-IPAddress local_ip(192,168,1,1);
-IPAddress gateway(192,168,1,1);
-IPAddress subnet(255,255,255,0);
-
 int ledPin = 18;
 bool ledStatus = LOW;
 
@@ -67,7 +63,7 @@ String SendHTML(bool ledStat) {
   ptr += "</head>\n";
   ptr += "<body>\n";
   ptr += "<h1>ESP32 Web Server</h1>\n";
-  ptr += "<h3>Using Access Point(AP) Mode</h3>\n";
+  ptr += "<h3>Using Station(STA) Mode</h3>\n";
 
   if (ledStat)
     ptr += "<p>LED Status: ON</p><a class=\"button button-off\" href=\"/ledoff\">OFF</a>\n";
