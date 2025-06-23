@@ -54,3 +54,67 @@ void setup(){
   server.begin();
   Serial.println("Web server started. Open http://localhost:8180 in your browser.");
 }
+
+void loop(){
+  float humidity = sensor.readHumidity();
+  float temperature = sensor.readTemperature();
+
+  while (!isnan(humidity) && !isnan(temperature)) {
+  // Clear previous RGB LED state
+  digitalWrite(bluePin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(redPin, LOW);
+
+  // Display humidity
+  lcd.setCursor(0, 1);
+  lcd.print("                ");  
+  delay(300);
+  lcd.setCursor(0, 1);
+  lcd.print(humidity, 1);
+  lcd.print(" %");
+
+  if (humidity <= 30) {
+    lcd.setCursor(9, 1);
+    lcd.print("Too Dry");
+  } else if (humidity <= 60) {
+    lcd.setCursor(9, 1);
+    lcd.print("Normal");
+  } else if (humidity <= 80) {
+    lcd.setCursor(9, 1);
+    lcd.print("Humid");
+  } else {
+    lcd.setCursor(9, 1);
+    lcd.print("Too Humid");
+  }
+
+  delay(500);
+
+  // Display temperature
+  lcd.setCursor(0, 3);
+  lcd.print("                ");  
+  delay(300);
+  lcd.setCursor(0, 3);
+  lcd.print(temperature, 1);
+  lcd.print(" C");
+
+  if (temperature < 18) {
+    digitalWrite(bluePin, HIGH);
+    lcd.setCursor(9, 3);
+    lcd.print("Chilly");
+  } else if (temperature < 28) {
+    digitalWrite(greenPin, HIGH);
+    lcd.setCursor(9, 3);
+    lcd.print("Comfy");
+  } else {
+    digitalWrite(redPin, HIGH);
+    lcd.setCursor(9, 3);
+    lcd.print("Too hot");
+  }
+
+  delay(1000); 
+  break;       
+}
+
+  server.handleClient();
+}
+
