@@ -118,3 +118,40 @@ void loop(){
   server.handleClient();
 }
 
+void Homepage(){
+  server.send(200, "text/html", sendHTML());
+}
+
+void Notfound(){
+  server.send(404, "text/plain", "Not Found");
+}
+
+String sendHTML() {
+  float humidity = sensor.readHumidity();
+  float temperature = sensor.readTemperature();
+
+  String html = "<!DOCTYPE html><html><head>";
+  html += "<meta charset='UTF-8'>";
+  html += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+  html += "<title>Weather Monitor</title>";
+  html += "<style>";
+  html += "body { font-family: Arial; text-align: center; background: #f0f0f0; padding: 30px; }";
+  html += ".card { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); }";
+  html += "h1 { margin-bottom: 20px; }";
+  html += "p { font-size: 1.2em; }";
+  html += "button { margin-top: 20px; padding: 10px 20px; font-size: 1em; }";
+  html += "</style></head><body>";
+  html += "<div class='card'>";
+  html += "<h1>Weather Monitor</h1>";
+
+  if (!isnan(humidity) && !isnan(temperature)) {
+    html += "<p><strong>Humidity:</strong> " + String(humidity, 1) + " %</p>";
+    html += "<p><strong>Temperature:</strong> " + String(temperature, 1) + " °C</p>";
+  } else {
+    html += "<p><strong>Sensor Error:</strong> Data not available</p>";
+  }
+
+  html += "<button onclick='location.reload()'>Refresh</button>";
+  html += "</div></body></html>";
+  return html;
+}
