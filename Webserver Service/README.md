@@ -40,4 +40,4 @@ This port forwarding can be achieved by including this line of code in the Wokwi
 from = "localhost:8180"  
 to = "target:80"
 
-The 'from' parameter specifies the address and port that my computer would use to access the server. The 'to' parameter specifies the port to access the simulated ESP32, allowing the browser to connect to the web server on the ESP32.
+The 'from' parameter specifies the address and port that my computer would use to access the server. The 'to' parameter specifies the port through which access to the simulated ESP32 would be made, allowing the browser to connect to the web server on the ESP32.
